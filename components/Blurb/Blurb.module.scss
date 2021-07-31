@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.blurb {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    padding: 1em;
+    // box-shadow: $box-shadow;
+    // border-radius: $graph-radius;
+}
+
+.title {
+    font-size: 25px;
+}

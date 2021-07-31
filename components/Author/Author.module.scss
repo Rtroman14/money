@@ -1,0 +1,18 @@
+.author {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.wrapper {
+    display: flex;
+    padding-right: 10px;
+}
+
+.image {
+    border-radius: 50%;
+}

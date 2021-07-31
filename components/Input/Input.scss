@@ -1,0 +1,35 @@
+.dashboard__graph input.MuiOutlinedInput-input {
+    padding: 0;
+}
+
+.dashboard__graph fieldset.MuiOutlinedInput-notchedOutline {
+    border: 1px solid transparent;
+}
+
+// fieldset.MuiOutlinedInput-root.Mui-disabled,
+// fieldset.MuiOutlinedInput-notchedOutline {
+//     border-color: rgba(0, 0, 0, 0) !important;
+// }
+
+div.dashboard__graph
+    > main
+    > div
+    > div:nth-child(4)
+    > div
+    > div:nth-child(1)
+    > div
+    > div
+    > div
+    > fieldset,
+div.dashboard__graph
+    > main
+    > div
+    > div:nth-child(3)
+    > div
+    > div:nth-child(1)
+    > div
+    > div
+    > div
+    > fieldset {
+    border-color: rgba(0, 0, 0, 0);
+}

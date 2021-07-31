@@ -1,0 +1,160 @@
+@import "./global.scss";
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    // min-height: calc(100vh - 70px);
+    min-height: 100vh;
+
+    &__logo {
+        @include flex-center;
+        margin-bottom: 1em;
+        text-decoration: none;
+
+        & > h2 {
+            font-size: 26px;
+        }
+    }
+
+    &__graph {
+        padding: 3em;
+        background-color: #f7f8fb;
+        // @include flex-center;
+
+        &-budget {
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 25px;
+
+            grid-template-areas:
+                "card-1 card-2 card-3 card-4"
+                ". pie-chart pie-chart ."
+                "table table table table";
+        }
+
+        &-investing {
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 25px;
+
+            grid-template-areas:
+                "chart chart chart chart"
+                "card-2 slider . ."
+                ". . . ."
+                ". . . .";
+        }
+
+        &-piechart {
+            grid-area: pie-chart;
+
+            & > div {
+                border-radius: $graph-radius;
+                // width: min-content;
+                width: 100%;
+                box-shadow: $box-shadow;
+                margin: 0 auto;
+            }
+        }
+
+        &-table {
+            grid-area: table;
+
+            box-shadow: $box-shadow;
+            border-radius: $graph-radius;
+            overflow: hidden;
+
+            .category {
+                padding: 3px;
+                border: 1px solid black;
+
+                &-needs {
+                    background: linear-gradient(
+                        90deg,
+                        rgba(92, 185, 73, 1) 0%,
+                        rgba(131, 224, 113, 1) 100%
+                    );
+                }
+
+                &-wants {
+                    background: linear-gradient(
+                        90deg,
+                        rgba(4, 4, 5, 1) 0%,
+                        rgba(70, 70, 73, 1) 100%
+                    );
+
+                    color: white;
+
+                    & > .MuiSelect-icon {
+                        color: white;
+                    }
+                }
+
+                &-savings {
+                    background: linear-gradient(
+                        90deg,
+                        rgba(100, 155, 209, 1) 0%,
+                        rgba(133, 191, 240, 1) 100%
+                    );
+                }
+            }
+        }
+
+        &-chart {
+            grid-area: chart;
+        }
+    }
+}
+
+.active {
+    color: white !important;
+}
+
+.selected {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+span.MuiTypography-body1 {
+    font-family: "Montserrat", sans-serif;
+    transition: all 0.2s;
+}
+
+div.MuiListItem-root {
+    border-radius: 10px;
+    margin-bottom: 5px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+
+        span.MuiTypography-body1 {
+            color: white;
+        }
+    }
+}
+
+.blur-small {
+    filter: blur(5px);
+}
+
+.blur-large {
+    filter: blur(8px);
+}
+
+.test {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23f8f8f8' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23f0f0f0' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23e9e9e9' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23e2e2e2' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23dbdbdb' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23d3d3d3' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23cccccc' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+
+    &__test {
+        width: 50em;
+        margin: 0 auto;
+
+        & > div {
+            border-radius: $graph-radius;
+            box-shadow: $box-shadow;
+        }
+    }
+}

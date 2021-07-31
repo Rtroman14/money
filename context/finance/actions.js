@@ -1,0 +1,3 @@
+export const UPDATE_DATA = "UPDATE_DATA";
+export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
+export const UPDATE_INCOME = "UPDATE_INCOME";

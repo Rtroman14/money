@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.areachart {
+    grid-area: chart;
+
+    & > div {
+        border-radius: $graph-radius;
+        // width: min-content;
+        box-shadow: $box-shadow;
+        margin: 0 auto;
+    }
+}
