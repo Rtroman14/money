@@ -1,6 +1,6 @@
 import Typical from "react-typical";
 
-export default function Housing() {
+export default function CarBuying() {
     return (
         <div
             style={{

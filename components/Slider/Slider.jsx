@@ -1,8 +1,7 @@
-import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
-import "./Slider.scss";
+// import "./Slider.scss";
 
 function valuetext(value) {
     return `${value}°C`;

@@ -1,10 +1,5 @@
 import React, { useState, useContext } from "react";
 
-// import Highcharts from "highcharts/highstock";
-// import HighchartsReact from "highcharts-react-official";
-
-// require("highcharts/modules/exporting")(Highcharts);
-
 import Highcharts from "highcharts/highstock";
 import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsReact from "highcharts-react-official";
@@ -15,15 +10,9 @@ if (typeof Highcharts === "object") {
 
 import { FinancialContext } from "../../context/finance/FinancialContext";
 
-const options = (needs, wants, savings, filterByCategory) => {
-    const [isSelected, setIsSelected] = useState({
-        needs: false,
-        wants: false,
-        savings: false,
-    });
-
-    return {
-        colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+if (typeof Highcharts === "object") {
+    Highcharts.setOptions({
+        colors: Highcharts.getOptions().colors.map(function (color) {
             return {
                 radialGradient: {
                     cx: 0.5,
@@ -36,6 +25,17 @@ const options = (needs, wants, savings, filterByCategory) => {
                 ],
             };
         }),
+    });
+}
+
+const options = (needs, wants, savings, filterByCategory) => {
+    const [isSelected, setIsSelected] = useState({
+        needs: false,
+        wants: false,
+        savings: false,
+    });
+
+    return {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,

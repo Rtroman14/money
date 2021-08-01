@@ -1,15 +1,28 @@
+import React, { useState } from "react";
+
 import Link from "next/link";
-// import { useLocation } from "@reach/router";
 import { useRouter } from "next/router";
+
+import { makeStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import { GiPieChart } from "@react-icons/all-files/gi/GiPieChart";
 import { AiOutlineAreaChart } from "@react-icons/all-files/ai/AiOutlineAreaChart";
 import { MdDirectionsCar } from "@react-icons/all-files/md/MdDirectionsCar";
 import { BsFillHouseDoorFill } from "@react-icons/all-files/bs/BsFillHouseDoorFill";
 
-import { FinancialProvider } from "../context/finance/FinancialContext";
+import BudgetPie from "./Dashboard/BudgetPie";
+import Investing from "./Dashboard/Investing";
+import Housing from "./Dashboard/Housing";
+import CarBuying from "./Dashboard/CarBuying";
 
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { FinancialProvider } from "../context/finance/FinancialContext";
 
 const theme = createTheme({
     overrides: {
@@ -51,15 +64,6 @@ const theme = createTheme({
     },
 });
 
-// ------------------------------
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-
 const drawerWidth = 260;
 
 const useStyles = makeStyles((theme) => ({
@@ -89,6 +93,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function DashboardLayout({ children }) {
+    const [dashboardComponent, setDashboardComponent] = useState(<BudgetPie />);
+    const renderDashboardComponent = (name) => {
+        const components = [
+            { name: "BudgetPie", component: <BudgetPie /> },
+            { name: "Investing", component: <Investing /> },
+            { name: "Housing", component: <Housing /> },
+            { name: "CarBuying", component: <CarBuying /> },
+        ];
+
+        const { component } = components.find((component) => component.name === name);
+
+        setDashboardComponent(component);
+    };
+
     const classes = useStyles();
 
     const { asPath } = useRouter();
@@ -113,80 +131,76 @@ export default function DashboardLayout({ children }) {
                 </div>
                 <Divider light variant="middle" />
                 <List style={{ padding: "0 10px" }}>
-                    <Link style={{ textDecoration: "none" }} href="/dashboard/50-30-20">
-                        <ListItem
-                            className={asPath.includes("50-30-20") ? "selected" : null}
-                            button
-                            key="50/30/20">
-                            <ListItemIcon>
-                                <GiPieChart
-                                    color={asPath.includes("50-30-20") ? "#fff" : "#adb5bd"}
-                                    size="1.5em"
-                                />
-                            </ListItemIcon>
-                            <ListItemText
-                                className={asPath.includes("50-30-20") ? "active" : classes.font}
-                                primary="50/30/20"
+                    <ListItem
+                        onClick={() => renderDashboardComponent("BudgetPie")}
+                        className={asPath.includes("50-30-20") ? "selected" : null}
+                        button
+                        key="50/30/20">
+                        <ListItemIcon>
+                            <GiPieChart
+                                color={asPath.includes("50-30-20") ? "#fff" : "#adb5bd"}
+                                size="1.5em"
                             />
-                        </ListItem>
-                    </Link>
-                    <Link style={{ textDecoration: "none" }} href="/dashboard/car-buying">
-                        <ListItem
-                            className={asPath.includes("car-buying") ? "selected" : null}
-                            button
-                            key="Car Buying">
-                            <ListItemIcon>
-                                <MdDirectionsCar
-                                    color={asPath.includes("car-buying") ? "#fff" : "#adb5bd"}
-                                    size="1.5em"
-                                />
-                            </ListItemIcon>
-                            <ListItemText
-                                className={asPath.includes("car-buying") ? "active" : classes.font}
-                                primary="Car Buying"
+                        </ListItemIcon>
+                        <ListItemText
+                            className={asPath.includes("50-30-20") ? "active" : classes.font}
+                            primary="50/30/20"
+                        />
+                    </ListItem>
+                    <ListItem
+                        onClick={() => renderDashboardComponent("CarBuying")}
+                        className={asPath.includes("car-buying") ? "selected" : null}
+                        button
+                        key="Car Buying">
+                        <ListItemIcon>
+                            <MdDirectionsCar
+                                color={asPath.includes("car-buying") ? "#fff" : "#adb5bd"}
+                                size="1.5em"
                             />
-                        </ListItem>
-                    </Link>
-                    <Link style={{ textDecoration: "none" }} href="/dashboard/housing">
-                        <ListItem
-                            className={asPath.includes("housing") ? "selected" : null}
-                            button
-                            key="Housing">
-                            <ListItemIcon>
-                                <BsFillHouseDoorFill
-                                    color={asPath.includes("housing") ? "#fff" : "#adb5bd"}
-                                    size="1.5em"
-                                />
-                            </ListItemIcon>
-                            <ListItemText
-                                className={asPath.includes("housing") ? "active" : classes.font}
-                                primary="Housing"
+                        </ListItemIcon>
+                        <ListItemText
+                            className={asPath.includes("car-buying") ? "active" : classes.font}
+                            primary="Car Buying"
+                        />
+                    </ListItem>
+                    <ListItem
+                        onClick={() => renderDashboardComponent("Housing")}
+                        className={asPath.includes("housing") ? "selected" : null}
+                        button
+                        key="Housing">
+                        <ListItemIcon>
+                            <BsFillHouseDoorFill
+                                color={asPath.includes("housing") ? "#fff" : "#adb5bd"}
+                                size="1.5em"
                             />
-                        </ListItem>
-                    </Link>
-                    <Link style={{ textDecoration: "none" }} href="/dashboard/investing">
-                        <ListItem
-                            className={asPath.includes("investing") ? "selected" : null}
-                            button
-                            key="Investing">
-                            <ListItemIcon>
-                                <AiOutlineAreaChart
-                                    color={asPath.includes("investing") ? "#fff" : "#adb5bd"}
-                                    size="1.5em"
-                                />
-                            </ListItemIcon>
-                            <ListItemText
-                                className={asPath.includes("investing") ? "active" : classes.font}
-                                primary="Investing"
+                        </ListItemIcon>
+                        <ListItemText
+                            className={asPath.includes("housing") ? "active" : classes.font}
+                            primary="Housing"
+                        />
+                    </ListItem>
+                    <ListItem
+                        onClick={() => renderDashboardComponent("Investing")}
+                        className={asPath.includes("investing") ? "selected" : null}
+                        button
+                        key="Investing">
+                        <ListItemIcon>
+                            <AiOutlineAreaChart
+                                color={asPath.includes("investing") ? "#fff" : "#adb5bd"}
+                                size="1.5em"
                             />
-                        </ListItem>
-                    </Link>
+                        </ListItemIcon>
+                        <ListItemText
+                            className={asPath.includes("investing") ? "active" : classes.font}
+                            primary="Investing"
+                        />
+                    </ListItem>
                 </List>
             </Drawer>
             <div className="dashboard__graph">
                 <ThemeProvider theme={theme}>
                     <FinancialProvider>
-                        <main>{children}</main>
+                        <main>{React.cloneElement(children, { dashboardComponent })}</main>
                     </FinancialProvider>
                 </ThemeProvider>
             </div>

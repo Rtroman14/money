@@ -24,7 +24,7 @@ export function FinancialProvider(props) {
 
     const [userData, dispatch] = useReducer(userDataReducer, initialState);
 
-    const addRow = row => {
+    const addRow = (row) => {
         const newRow = {
             id: uuidv4(),
             name: row.name,
@@ -39,8 +39,8 @@ export function FinancialProvider(props) {
         });
     };
 
-    const deleteRow = id => {
-        const removedRow = userData.data.filter(row => row.id !== id);
+    const deleteRow = (id) => {
+        const removedRow = userData.data.filter((row) => row.id !== id);
 
         dispatch({
             type: UPDATE_DATA,
@@ -50,7 +50,7 @@ export function FinancialProvider(props) {
 
     const editCell = (id, field, newValue) => {
         const value = field === "cost" ? Number(newValue) : newValue;
-        const editedRow = userData.data.map(row =>
+        const editedRow = userData.data.map((row) =>
             row.id === id ? { ...row, [field]: value } : row
         );
 
@@ -60,14 +60,14 @@ export function FinancialProvider(props) {
         });
     };
 
-    const filterByCategory = category => {
+    const filterByCategory = (category) => {
         dispatch({
             type: FILTER_BY_CATEGORY,
             payload: category,
         });
     };
 
-    const handleIncomeChange = event => {
+    const handleIncomeChange = (event) => {
         const newIncome = {
             ...userData.income,
             [event.target.name]: Number(event.target.value.replace(/[^0-9\.]+/g, "")),
@@ -94,7 +94,7 @@ export function FinancialProvider(props) {
         const filteredTable =
             userData.category === "all"
                 ? userData.data
-                : userData.data.filter(row => row.category === userData.category);
+                : userData.data.filter((row) => row.category === userData.category);
 
         setTableData({
             ...tableData,
@@ -125,33 +125,34 @@ export function FinancialProvider(props) {
 
     // ------------------ EMERGENCY FUND ------------------ //
     const [emergencyFund, setEmergencyFund] = useState(
-        userData.data.filter(row => row.category === "needs").reduce((a, b) => a + b.cost, 0) * 6
+        userData.data.filter((row) => row.category === "needs").reduce((a, b) => a + b.cost, 0) * 6
     );
 
     // ------------------ CATEGORIES ------------------ //
     const [categories, setCategories] = useState({
         needs: userData.data
-            .filter(row => row.category === "needs")
+            .filter((row) => row.category === "needs")
             .reduce((a, b) => a + b.cost, 0),
         wants:
-            userData.data.filter(row => row.category === "wants").reduce((a, b) => a + b.cost, 0) +
-            leftoverMoney,
+            userData.data
+                .filter((row) => row.category === "wants")
+                .reduce((a, b) => a + b.cost, 0) + leftoverMoney,
         savings: userData.data
-            .filter(row => row.category === "savings")
+            .filter((row) => row.category === "savings")
             .reduce((a, b) => a + b.cost, 0),
     });
 
     const updateCategories = () =>
         setCategories({
             needs: userData.data
-                .filter(row => row.category === "needs")
+                .filter((row) => row.category === "needs")
                 .reduce((a, b) => a + b.cost, 0),
             wants:
                 userData.data
-                    .filter(row => row.category === "wants")
+                    .filter((row) => row.category === "wants")
                     .reduce((a, b) => a + b.cost, 0) + leftoverMoney,
             savings: userData.data
-                .filter(row => row.category === "savings")
+                .filter((row) => row.category === "savings")
                 .reduce((a, b) => a + b.cost, 0),
         });
 
@@ -170,8 +171,9 @@ export function FinancialProvider(props) {
         updateTableData();
 
         setEmergencyFund(
-            userData.data.filter(row => row.category === "needs").reduce((a, b) => a + b.cost, 0) *
-                6
+            userData.data
+                .filter((row) => row.category === "needs")
+                .reduce((a, b) => a + b.cost, 0) * 6
         );
 
         updateCategories();
@@ -197,8 +199,7 @@ export function FinancialProvider(props) {
                 isBlur,
                 sortRows,
                 toggleBlur,
-            }}
-        >
+            }}>
             {props.children}
         </FinancialContext.Provider>
     );

@@ -1,6 +1,3 @@
-import React from "react";
-
-import DashboardLayout from "../../components/layout-dashboard";
 import AreaChart from "../AreaChart/AreaChart";
 import Card from "../Card/Card";
 import Slider from "../Slider/Slider";
@@ -9,24 +6,22 @@ import { GiPayMoney } from "@react-icons/all-files/gi/GiPayMoney";
 
 export default function Investing() {
     return (
-        <DashboardLayout>
-            <div className="dashboard__graph-investing">
-                <div className="dashboard__graph-chart">
-                    <AreaChart title="Investing in the Market vs. Savings Account" />
-                </div>
-                <Card
-                    name="age"
-                    title="Initial Investment Age"
-                    amount={25}
-                    icon={<GiPayMoney color="black" size="3.2em" />}
-                    tooltip="The age you started investing"
-                    edit
-                />
-                <div style={{ gridArea: "slider" }}>
-                    <Slider />
-                </div>
+        <div className="dashboard__graph-investing">
+            <div className="dashboard__graph-chart">
+                <AreaChart title="Investing in the Market vs. Savings Account" />
             </div>
-        </DashboardLayout>
+            <Card
+                name="age"
+                title="Initial Investment Age"
+                amount={25}
+                icon={<GiPayMoney color="black" size="3.2em" />}
+                tooltip="The age you started investing"
+                edit
+            />
+            <div style={{ gridArea: "slider" }}>
+                <Slider />
+            </div>
+        </div>
     );
 }
 
