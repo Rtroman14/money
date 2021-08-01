@@ -7,7 +7,7 @@ import NumberFormatCustom from "../../NumberFormatCustom/NumberFormatCustom";
 
 import { FinancialContext } from "../../../context/finance/FinancialContext";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     disabledInput: {
         "& .MuiInputBase-root.Mui-disabled": {
             color: "black",
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Cell({ value, id, setIsHover }) {
+export default function Cell({ name, value, id, setIsHover }) {
     const classes = useStyles();
 
     const { editCell, isBlur } = useContext(FinancialContext);
@@ -33,7 +33,7 @@ export default function Cell({ value, id, setIsHover }) {
 
     const node = useRef();
 
-    const handleClick = event => {
+    const handleClick = (event) => {
         if (node.current.contains(event.target)) {
             // inside click
             return;
@@ -73,7 +73,8 @@ export default function Cell({ value, id, setIsHover }) {
             }`}
             variant="outlined"
             value={cost}
-            onChange={event => setCost(event.target.value)}
+            name={name}
+            onChange={(event) => setCost(event.target.value)}
             disabled={!isSelect}
             onClick={() => handleSelect()}
             InputProps={{

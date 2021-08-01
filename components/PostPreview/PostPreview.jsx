@@ -17,7 +17,7 @@ export default function PostPreview({ post }) {
     const { handleClickCategory } = useContext(PostContext) || "";
 
     const categories = post.categories.map((category, index) => (
-        <span onClick={handleClickCategory} className={styles.category}>
+        <span key={index} onClick={handleClickCategory} className={styles.category}>
             {category.title}
         </span>
     ));
@@ -59,6 +59,7 @@ export default function PostPreview({ post }) {
                 {/* <Divider /> */}
                 {post.authors.map((author) => (
                     <Author
+                        key={author.author._id}
                         id={author.author._id}
                         name={author.author.name}
                         image={author.author.image}

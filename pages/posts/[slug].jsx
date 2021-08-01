@@ -20,7 +20,9 @@ const postQuery = `*[_type == "post" && slug.current == $slug][0]{
 }`;
 
 export default function Post({ data: { post } }) {
-    const displayCategories = post.categories.map((category) => <div>{category.title}</div>);
+    const displayCategories = post.categories.map((category, index) => (
+        <div key={index}>{category.title}</div>
+    ));
 
     const publishedDate = moment(post.publishedAt).format("MMMM Do, YYYY");
 

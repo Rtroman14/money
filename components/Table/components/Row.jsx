@@ -25,12 +25,12 @@ export default function Row({ row }) {
     const categoryPercentage = Number((row.cost / categoryCost) * 100).toFixed(1);
 
     return (
-        <TableRow key={row.id} className={isHover ? "row-hovered" : null}>
+        <TableRow className={isHover ? "row-hovered" : null}>
             <TableCell scope="row">
                 <NameCell id={row.id} value={row.name} setIsHover={setIsHover} />
             </TableCell>
             <TableCell align="center">
-                <CostCell id={row.id} value={row.cost} setIsHover={setIsHover} />
+                <CostCell name={row.name} id={row.id} value={row.cost} setIsHover={setIsHover} />
             </TableCell>
             <TableCell align="center">
                 <Select id={row.id} value={row.category} />

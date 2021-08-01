@@ -62,7 +62,7 @@ export default function BudgetTable() {
                 </TableHead>
                 <TableBody>
                     {tableData.table.map((row) => (
-                        <Row row={row} />
+                        <Row key={row.id} row={row} />
                     ))}
                     <TableRow key="addRow">
                         <TableCell style={{ padding: "10px" }}>
