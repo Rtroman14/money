@@ -1,9 +1,17 @@
 import React, { useState, useContext } from "react";
 
+// import Highcharts from "highcharts/highstock";
+// import HighchartsReact from "highcharts-react-official";
+
+// require("highcharts/modules/exporting")(Highcharts);
+
 import Highcharts from "highcharts/highstock";
+import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsReact from "highcharts-react-official";
 
-require("highcharts/modules/exporting")(Highcharts);
+if (typeof Highcharts === "object") {
+    HighchartsExporting(Highcharts);
+}
 
 import { FinancialContext } from "../../context/finance/FinancialContext";
 
@@ -63,7 +71,7 @@ const options = (needs, wants, savings, filterByCategory) => {
                 //     duration: 1000,
                 // },
                 events: {
-                    click: event => {
+                    click: (event) => {
                         const name = event.point.name.toLowerCase();
 
                         setIsSelected({

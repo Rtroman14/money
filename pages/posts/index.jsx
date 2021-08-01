@@ -1,3 +1,4 @@
+import Layout from "../../components/Layout";
 import { sanityClient } from "../../lib/sanity";
 
 const postQuery = `*[_type == "post"] {
@@ -49,6 +50,8 @@ export default function BlogPage({ posts }) {
         </div>
     );
 }
+
+BlogPage.getLayout = (page) => <Layout>{page}</Layout>;
 
 export async function getStaticProps(context) {
     const posts = await sanityClient.fetch(postQuery);

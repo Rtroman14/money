@@ -1,9 +1,9 @@
 import React from "react";
 
 import DashboardLayout from "../../components/layout-dashboard";
-import AreaChart from "../../components/AreaChart/AreaChart";
-import Card from "../../components/Card/Card";
-import Slider from "../../components/Slider/Slider";
+import AreaChart from "../AreaChart/AreaChart";
+import Card from "../Card/Card";
+import Slider from "../Slider/Slider";
 
 import { GiPayMoney } from "@react-icons/all-files/gi/GiPayMoney";
 

@@ -41,8 +41,7 @@ export default function BudgetTable() {
                         <TableCell>
                             <div
                                 onClick={sortRows}
-                                style={{ display: "inline-block", cursor: "pointer" }}
-                            >
+                                style={{ display: "inline-block", cursor: "pointer" }}>
                                 Cost
                             </div>
                             <div style={{ display: "inline-block" }}>
@@ -62,7 +61,7 @@ export default function BudgetTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {tableData.table.map(row => (
+                    {tableData.table.map((row) => (
                         <Row row={row} />
                     ))}
                     <TableRow key="addRow">
@@ -72,12 +71,13 @@ export default function BudgetTable() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell colSpan="2" style={{ textAlign: "center" }}>
-                            {["All", "Needs", "Wants", "Savings"].map(category => (
+                            {["All", "Needs", "Wants", "Savings"].map((category) => (
                                 <Chip
                                     key={category}
                                     className={
-                                        userData.category === category.toLowerCase() &&
-                                        "chip-selected"
+                                        userData.category === category.toLowerCase()
+                                            ? "chip-selected"
+                                            : null
                                     }
                                     label={category}
                                     component="span"

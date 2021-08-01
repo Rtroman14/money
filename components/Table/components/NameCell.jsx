@@ -5,7 +5,7 @@ import { FinancialContext } from "../../../context/finance/FinancialContext";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     disabledInput: {
         "& .MuiInputBase-root.Mui-disabled": {
             color: "black",
@@ -31,7 +31,7 @@ export default function NameCell({ value, id, setIsHover }) {
 
     const node = useRef();
 
-    const handleClick = event => {
+    const handleClick = (event) => {
         if (node.current.contains(event.target)) {
             // inside click
             return;
@@ -65,7 +65,7 @@ export default function NameCell({ value, id, setIsHover }) {
             className={`${classes.disabledInput} ${isSelect && classes.inputBorder}`}
             variant="outlined"
             value={name}
-            onChange={event => setName(event.target.value)}
+            onChange={(event) => setName(event.target.value)}
             disabled={!isSelect}
             onClick={() => handleSelect()}
         />

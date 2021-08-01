@@ -1,9 +1,11 @@
 import Image from "next/image";
-import { sanityClient, urlFor, PortableText } from "../../lib/sanity";
 import moment from "moment";
 
-import Author from "../../components/Author/Author";
+import { sanityClient, urlFor, PortableText } from "../../lib/sanity";
+
 // import RecommendedPosts from "../../components/RecommendedPosts/RecommendedPosts";
+import Author from "../../components/Author/Author";
+import Layout from "../../components/Layout";
 
 const postQuery = `*[_type == "post" && slug.current == $slug][0]{
     _id,
@@ -65,6 +67,8 @@ export default function Post({ data: { post } }) {
         </div>
     );
 }
+
+Post.getLayout = (page) => <Layout>{page}</Layout>;
 
 export async function getStaticPaths() {
     const paths = await sanityClient.fetch(

@@ -10,7 +10,7 @@ import Select from "./Select";
 import NameCell from "./NameCell";
 import Filled from "./Filled";
 
-import "./Row.scss";
+// import "./Row.scss";
 
 import { FinancialContext } from "../../../context/finance/FinancialContext";
 
@@ -25,7 +25,7 @@ export default function Row({ row }) {
     const categoryPercentage = Number((row.cost / categoryCost) * 100).toFixed(1);
 
     return (
-        <TableRow key={row.id} className={isHover && "row-hovered"}>
+        <TableRow key={row.id} className={isHover ? "row-hovered" : null}>
             <TableCell scope="row">
                 <NameCell id={row.id} value={row.name} setIsHover={setIsHover} />
             </TableCell>
@@ -47,8 +47,7 @@ export default function Row({ row }) {
                     size="medium"
                     color="default"
                     onClick={() => deleteRow(row.id)}
-                    aria-label="delete"
-                >
+                    aria-label="delete">
                     {/* <DeleteIcon fontSize="small" /> */}
                     <DeleteIcon />
                 </IconButton>

@@ -1,20 +1,17 @@
-import React from "react";
-import { Link } from "gatsby";
-import { useLocation } from "@reach/router";
+import Link from "next/link";
+// import { useLocation } from "@reach/router";
+import { useRouter } from "next/router";
 
 import { GiPieChart } from "@react-icons/all-files/gi/GiPieChart";
 import { AiOutlineAreaChart } from "@react-icons/all-files/ai/AiOutlineAreaChart";
 import { MdDirectionsCar } from "@react-icons/all-files/md/MdDirectionsCar";
 import { BsFillHouseDoorFill } from "@react-icons/all-files/bs/BsFillHouseDoorFill";
 
-import "../styles/dashboard.scss";
-import "../styles/global.scss";
-
 import { FinancialProvider } from "../context/finance/FinancialContext";
 
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
+const theme = createTheme({
     overrides: {
         MuiTooltip: {
             tooltip: {
@@ -65,7 +62,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 const drawerWidth = 260;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
     },
@@ -94,7 +91,7 @@ const useStyles = makeStyles(theme => ({
 export default function DashboardLayout({ children }) {
     const classes = useStyles();
 
-    const { pathname } = useLocation();
+    const { asPath } = useRouter();
 
     return (
         <div className="dashboard">
@@ -104,87 +101,82 @@ export default function DashboardLayout({ children }) {
                 classes={{
                     paper: classes.drawerPaper,
                 }}
-                anchor="left"
-            >
+                anchor="left">
                 <div className={classes.toolbar} />
                 <div>
-                    <Link className="dashboard__logo" to="/">
-                        {/* <Img fixed={data.fixed.childImageSharp.fixed} /> */}
-                        <h2 style={{ textAlign: "center", color: "white" }}>Cash Money</h2>
+                    <Link className="dashboard__logo" href="/">
+                        <a>
+                            {/* <Img fixed={data.fixed.childImageSharp.fixed} /> */}
+                            <h2 style={{ textAlign: "center", color: "white" }}>Cash Money</h2>
+                        </a>
                     </Link>
                 </div>
                 <Divider light variant="middle" />
                 <List style={{ padding: "0 10px" }}>
-                    <Link style={{ textDecoration: "none" }} to="/dashboard/50-30-20">
+                    <Link style={{ textDecoration: "none" }} href="/dashboard/50-30-20">
                         <ListItem
-                            className={pathname.includes("50-30-20") && "selected"}
+                            className={asPath.includes("50-30-20") ? "selected" : null}
                             button
-                            key="50/30/20"
-                        >
+                            key="50/30/20">
                             <ListItemIcon>
                                 <GiPieChart
-                                    color={pathname.includes("50-30-20") ? "#fff" : "#adb5bd"}
+                                    color={asPath.includes("50-30-20") ? "#fff" : "#adb5bd"}
                                     size="1.5em"
                                 />
                             </ListItemIcon>
                             <ListItemText
-                                className={pathname.includes("50-30-20") ? "active" : classes.font}
+                                className={asPath.includes("50-30-20") ? "active" : classes.font}
                                 primary="50/30/20"
                             />
                         </ListItem>
                     </Link>
-                    <Link style={{ textDecoration: "none" }} to="/dashboard/car-buying">
+                    <Link style={{ textDecoration: "none" }} href="/dashboard/car-buying">
                         <ListItem
-                            className={pathname.includes("car-buying") && "selected"}
+                            className={asPath.includes("car-buying") ? "selected" : null}
                             button
-                            key="Car Buying"
-                        >
+                            key="Car Buying">
                             <ListItemIcon>
                                 <MdDirectionsCar
-                                    color={pathname.includes("car-buying") ? "#fff" : "#adb5bd"}
+                                    color={asPath.includes("car-buying") ? "#fff" : "#adb5bd"}
                                     size="1.5em"
                                 />
                             </ListItemIcon>
                             <ListItemText
-                                className={
-                                    pathname.includes("car-buying") ? "active" : classes.font
-                                }
+                                className={asPath.includes("car-buying") ? "active" : classes.font}
                                 primary="Car Buying"
                             />
                         </ListItem>
                     </Link>
-                    <Link style={{ textDecoration: "none" }} to="/dashboard/housing">
+                    <Link style={{ textDecoration: "none" }} href="/dashboard/housing">
                         <ListItem
-                            className={pathname.includes("housing") && "selected"}
+                            className={asPath.includes("housing") ? "selected" : null}
                             button
-                            key="Housing"
-                        >
+                            key="Housing">
                             <ListItemIcon>
                                 <BsFillHouseDoorFill
-                                    color={pathname.includes("housing") ? "#fff" : "#adb5bd"}
+                                    color={asPath.includes("housing") ? "#fff" : "#adb5bd"}
                                     size="1.5em"
                                 />
                             </ListItemIcon>
                             <ListItemText
-                                className={pathname.includes("housing") ? "active" : classes.font}
+                                className={asPath.includes("housing") ? "active" : classes.font}
                                 primary="Housing"
                             />
                         </ListItem>
                     </Link>
-                    <Link style={{ textDecoration: "none" }} to="/dashboard/investing">
+                    <Link style={{ textDecoration: "none" }} href="/dashboard/investing">
                         <ListItem
-                            className={pathname.includes("investing") && "selected"}
+                            className={asPath.includes("investing") ? "selected" : null}
                             button
-                            key="Investing"
-                        >
+                            key="Investing">
                             <ListItemIcon>
                                 <AiOutlineAreaChart
-                                    color={pathname.includes("investing") ? "#fff" : "#adb5bd"}
+                                    color={asPath.includes("investing") ? "#fff" : "#adb5bd"}
                                     size="1.5em"
                                 />
                             </ListItemIcon>
                             <ListItemText
-                                className={pathname.includes("investing") ? "active" : classes.font}
+                                className={asPath.includes("investing") ? "active" : classes.font}
                                 primary="Investing"
                             />
                         </ListItem>

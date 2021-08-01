@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Filled({ value, category }) {
     const color = {
         needs: "rgba(92, 185, 73, 1)",
@@ -14,8 +12,7 @@ export default function Filled({ value, category }) {
                 border: "1px solid rgba(224, 224, 224, 1)",
                 background: `linear-gradient(to right, ${color[category]} ${value}%, #fff 0%)`,
                 borderRadius: "2px",
-            }}
-        >
+            }}>
             {value}%
         </div>
     );

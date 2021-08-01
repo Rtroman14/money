@@ -13,6 +13,8 @@ import Blurb from "../components/Blurb/Blurb";
 
 import Investing from "../public/investing.svg";
 
+import Layout from "../components/Layout";
+
 const postQuery = `
     *[_id == "0109f007-67b1-4c0f-8c56-4ce375c4d60b" || 
     _id == "389d5816-2250-401a-a736-89592b6d2e52" ||
@@ -187,6 +189,8 @@ export default function HomePage({ posts }) {
         </div>
     );
 }
+
+HomePage.getLayout = (page) => <Layout>{page}</Layout>;
 
 export async function getStaticProps(context) {
     const posts = await sanityClient.fetch(postQuery);

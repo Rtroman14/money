@@ -1,4 +1,5 @@
-@import "./global.scss";
+// @import "./global.scss";
+@import "./variables";
 
 .dashboard {
     display: grid;
@@ -157,4 +158,69 @@ div.MuiListItem-root {
             box-shadow: $box-shadow;
         }
     }
+}
+
+// in row.scss
+
+.dashboard__graph-table {
+    & input.MuiInputBase-input,
+    input.MuiOutlinedInput-input {
+        padding: 14px !important;
+        // padding: 17px !important;
+    }
+
+    & .MuiInputBase-input,
+    .MuiTableCell-root {
+        font-family: "Montserrat", sans-serif;
+        font-size: 15px;
+    }
+
+    & .MuiTableCell-head {
+        color: white;
+        font-size: 16px;
+    }
+
+    & .MuiTableCell-head:nth-child(2) {
+        width: 8em;
+    }
+
+    & .MuiSelect-outlined.MuiSelect-outlined {
+        padding-right: 0;
+    }
+
+    & td.MuiTableCell-root {
+        padding: 0;
+    }
+
+    & .MuiTableHead-root {
+        // background-color: $color-grey;
+        background-color: #121a27;
+    }
+
+    & .MuiOutlinedInput-input {
+        padding: 0;
+    }
+
+    & tr {
+        &:hover:not(:last-child) {
+            // background-color: $color-grey;
+            background-color: rgba(18, 26, 39, 0.1);
+        }
+    }
+
+    & .chip-selected {
+        // background-color: #3f51b5;
+        // background-color: $color-grey;
+
+        // color: white;
+        border: 1px solid black;
+    }
+
+    & .form-select .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+        border: none;
+    }
+}
+
+.row-hovered {
+    background-color: rgba(63, 81, 181, 0.08);
 }

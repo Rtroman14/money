@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-// import Ben from "../public/ben-franklin.jpg";
 import Ben from "../public/ben-franklin-gangster.png";
+
+import Layout from "../components/Layout";
 
 // pages/404.js
 export default function Custom404() {
@@ -24,3 +25,5 @@ export default function Custom404() {
         </div>
     );
 }
+
+Custom404.getLayout = (page) => <Layout>{page}</Layout>;

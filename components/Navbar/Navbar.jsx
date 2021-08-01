@@ -19,7 +19,7 @@ export default function Navbar() {
     }, []);
 
     // TODO: Change Posts to Learn
-    const pages = ["Posts", "Dashboard", "About"];
+    const pages = ["Posts", "Product", "About"];
 
     return (
         <nav className={`${styles.navbar} ${scroll && styles.scroll}`}>

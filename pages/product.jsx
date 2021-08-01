@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Pic from "../../public/dashboard.png";
+import Layout from "../components/Layout";
 
-export default function Dashboard() {
+import Pic from "../public/dashboard.png";
+
+export default function Product() {
     return (
         <div className="test">
             <div className="test__test">
@@ -25,3 +27,5 @@ export default function Dashboard() {
         </div>
     );
 }
+
+Product.getLayout = (page) => <Layout>{page}</Layout>;
