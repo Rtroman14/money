@@ -1,4 +1,3 @@
-// @import "./global.scss";
 @import "./variables";
 
 .dashboard {
@@ -22,18 +21,6 @@
         background-color: #f7f8fb;
         // @include flex-center;
 
-        &-budget {
-            display: grid;
-            grid-template-rows: auto;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 25px;
-
-            grid-template-areas:
-                "card-1 card-2 card-3 card-4"
-                ". pie-chart pie-chart ."
-                "table table table table";
-        }
-
         &-investing {
             display: grid;
             grid-template-rows: auto;
@@ -47,59 +34,12 @@
                 ". . . .";
         }
 
-        &-piechart {
-            grid-area: pie-chart;
-
-            & > div {
-                border-radius: $graph-radius;
-                // width: min-content;
-                width: 100%;
-                box-shadow: $box-shadow;
-                margin: 0 auto;
-            }
-        }
-
         &-table {
             grid-area: table;
 
             box-shadow: $box-shadow;
             border-radius: $graph-radius;
             overflow: hidden;
-
-            .category {
-                padding: 3px;
-                border: 1px solid black;
-
-                &-needs {
-                    background: linear-gradient(
-                        90deg,
-                        rgba(92, 185, 73, 1) 0%,
-                        rgba(131, 224, 113, 1) 100%
-                    );
-                }
-
-                &-wants {
-                    background: linear-gradient(
-                        90deg,
-                        rgba(4, 4, 5, 1) 0%,
-                        rgba(70, 70, 73, 1) 100%
-                    );
-
-                    color: white;
-
-                    & > .MuiSelect-icon {
-                        color: white;
-                    }
-                }
-
-                &-savings {
-                    background: linear-gradient(
-                        90deg,
-                        rgba(100, 155, 209, 1) 0%,
-                        rgba(133, 191, 240, 1) 100%
-                    );
-                }
-            }
         }
 
         &-chart {

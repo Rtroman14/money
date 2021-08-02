@@ -93,7 +93,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function DashboardLayout({ children }) {
-    const [dashboardComponent, setDashboardComponent] = useState(<BudgetPie />);
+    const [dashboardComponent, setDashboardComponent] = useState({
+        name: "BudgetPie",
+        component: <BudgetPie />,
+    });
+
     const renderDashboardComponent = (name) => {
         const components = [
             { name: "BudgetPie", component: <BudgetPie /> },
@@ -102,7 +106,7 @@ export default function DashboardLayout({ children }) {
             { name: "CarBuying", component: <CarBuying /> },
         ];
 
-        const { component } = components.find((component) => component.name === name);
+        const component = components.find((component) => component.name === name);
 
         setDashboardComponent(component);
     };
@@ -124,7 +128,6 @@ export default function DashboardLayout({ children }) {
                 <div>
                     <Link className="dashboard__logo" href="/">
                         <a>
-                            {/* <Img fixed={data.fixed.childImageSharp.fixed} /> */}
                             <h2 style={{ textAlign: "center", color: "white" }}>Cash Money</h2>
                         </a>
                     </Link>
@@ -133,65 +136,73 @@ export default function DashboardLayout({ children }) {
                 <List style={{ padding: "0 10px" }}>
                     <ListItem
                         onClick={() => renderDashboardComponent("BudgetPie")}
-                        className={asPath.includes("50-30-20") ? "selected" : null}
+                        className={dashboardComponent.name === "BudgetPie" ? "selected" : null}
                         button
                         key="50/30/20">
                         <ListItemIcon>
                             <GiPieChart
-                                color={asPath.includes("50-30-20") ? "#fff" : "#adb5bd"}
+                                color={dashboardComponent.name === "BudgetPie" ? "#fff" : "#adb5bd"}
                                 size="1.5em"
                             />
                         </ListItemIcon>
                         <ListItemText
-                            className={asPath.includes("50-30-20") ? "active" : classes.font}
+                            className={
+                                dashboardComponent.name === "BudgetPie" ? "active" : classes.font
+                            }
                             primary="50/30/20"
                         />
                     </ListItem>
                     <ListItem
                         onClick={() => renderDashboardComponent("CarBuying")}
-                        className={asPath.includes("car-buying") ? "selected" : null}
+                        className={dashboardComponent.name === "CarBuying" ? "selected" : null}
                         button
                         key="Car Buying">
                         <ListItemIcon>
                             <MdDirectionsCar
-                                color={asPath.includes("car-buying") ? "#fff" : "#adb5bd"}
+                                color={dashboardComponent.name === "CarBuying" ? "#fff" : "#adb5bd"}
                                 size="1.5em"
                             />
                         </ListItemIcon>
                         <ListItemText
-                            className={asPath.includes("car-buying") ? "active" : classes.font}
+                            className={
+                                dashboardComponent.name === "CarBuying" ? "active" : classes.font
+                            }
                             primary="Car Buying"
                         />
                     </ListItem>
                     <ListItem
                         onClick={() => renderDashboardComponent("Housing")}
-                        className={asPath.includes("housing") ? "selected" : null}
+                        className={dashboardComponent.name === "Housing" ? "selected" : null}
                         button
                         key="Housing">
                         <ListItemIcon>
                             <BsFillHouseDoorFill
-                                color={asPath.includes("housing") ? "#fff" : "#adb5bd"}
+                                color={dashboardComponent.name === "Housing" ? "#fff" : "#adb5bd"}
                                 size="1.5em"
                             />
                         </ListItemIcon>
                         <ListItemText
-                            className={asPath.includes("housing") ? "active" : classes.font}
+                            className={
+                                dashboardComponent.name === "Housing" ? "active" : classes.font
+                            }
                             primary="Housing"
                         />
                     </ListItem>
                     <ListItem
                         onClick={() => renderDashboardComponent("Investing")}
-                        className={asPath.includes("investing") ? "selected" : null}
+                        className={dashboardComponent.name === "Investing" ? "selected" : null}
                         button
                         key="Investing">
                         <ListItemIcon>
                             <AiOutlineAreaChart
-                                color={asPath.includes("investing") ? "#fff" : "#adb5bd"}
+                                color={dashboardComponent.name === "Investing" ? "#fff" : "#adb5bd"}
                                 size="1.5em"
                             />
                         </ListItemIcon>
                         <ListItemText
-                            className={asPath.includes("investing") ? "active" : classes.font}
+                            className={
+                                dashboardComponent.name === "Investing" ? "active" : classes.font
+                            }
                             primary="Investing"
                         />
                     </ListItem>

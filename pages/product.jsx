@@ -16,13 +16,7 @@ export default function Product() {
             <p>Copy this: https://www.drone.io/</p>
             <p>Copy this: https://hlrlookup.flywheelsites.com/</p>
             <div>
-                <Link href="/dashboard/50-30-20">50-30-20</Link>
-            </div>
-            <div>
-                <Link href="/dashboard/car-buying">car-buying</Link>
-            </div>
-            <div>
-                <Link href="/dashboard/investing">investing</Link>
+                <Link href="/dashboard">50-30-20</Link>
             </div>
         </div>
     );

@@ -13,11 +13,13 @@ import { FinancialContext } from "../../context/finance/FinancialContext";
 
 import DashboardLayout from "../DashboardLayout";
 
+import styles from "./BudgetPie.module.scss";
+
 export default function BudgetPie() {
     const { income, emergencyFund, leftoverMoney } = useContext(FinancialContext);
 
     return (
-        <div className="dashboard__graph-budget">
+        <div className={styles.container}>
             <Card
                 key={income.gross}
                 name="gross"
@@ -54,7 +56,7 @@ export default function BudgetPie() {
                 tooltip="Use this money to invest!"
                 edit={false}
             />
-            <div className="dashboard__graph-piechart">
+            <div className={styles.piechart}>
                 <PieChart />
             </div>
             <div className="dashboard__graph-table">

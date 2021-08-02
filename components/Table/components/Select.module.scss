@@ -1,0 +1,22 @@
+.category {
+    padding: 3px;
+    border: 1px solid black;
+}
+
+.needs {
+    background: linear-gradient(90deg, rgba(92, 185, 73, 1) 0%, rgba(131, 224, 113, 1) 100%);
+}
+
+.wants {
+    background: linear-gradient(90deg, rgba(4, 4, 5, 1) 0%, rgba(70, 70, 73, 1) 100%);
+
+    color: white;
+
+    & > .MuiSelect-icon {
+        color: white;
+    }
+}
+
+.savings {
+    background: linear-gradient(90deg, rgba(100, 155, 209, 1) 0%, rgba(133, 191, 240, 1) 100%);
+}
