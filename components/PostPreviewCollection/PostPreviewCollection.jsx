@@ -17,9 +17,5 @@ export default function PostPreviewCollection({ postCollection }) {
         .filter((post, i) => i < posts[posts.category])
         .map((post) => <PostPreview post={post} />);
 
-    return (
-        <div>
-            <div className={styles.collection}>{filteredPosts}</div>
-        </div>
-    );
+    return <div className={styles.collection}>{filteredPosts}</div>;
 }

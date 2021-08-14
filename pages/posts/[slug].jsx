@@ -39,14 +39,14 @@ export default function Post({ data: { post } }) {
                     priority
                 />
             </div>
-            <div className="blog">
-                <div className="blog__body">
-                    <h1 className="blog__title">{post.title}</h1>
+            <div className="post">
+                <div className="post__body">
+                    <h1 className="post__title">{post.title}</h1>
                     <PortableText blocks={post.body} />
                 </div>
-                <aside className="blog__meta">
-                    <div className="blog__meta-date">{publishedDate}</div>
-                    <div className="blog__meta-author">
+                <aside className="post__meta">
+                    <div className="post__meta-date">{publishedDate}</div>
+                    <div className="post__meta-author">
                         <h4>Author</h4>
                         <div style={{ padding: "1em 0 2em" }}>
                             {/* <Author authors={authors} dimensions="55px" /> */}
@@ -59,7 +59,7 @@ export default function Post({ data: { post } }) {
                             ))}
                         </div>
                     </div>
-                    <div className="blog__meta-categories">
+                    <div className="post__meta-categories">
                         <h4>Categories</h4>
                         {displayCategories}
                     </div>

@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.container {
+    @include flex-center;
+}
+
+.summary {
+    width: 500px;
+    margin: 35px 0;
+}

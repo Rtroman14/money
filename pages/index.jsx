@@ -53,7 +53,7 @@ export default function HomePage({ posts }) {
                         height: "min-content",
                         paddingTop: "9em",
                     }}>
-                    <h1 style={{ fontSize: "55px", lineHeight: "1" }}>Cash Flows</h1>
+                    <h1 style={{ fontSize: "55px", lineHeight: "1" }}>Cash Money</h1>
                     <p style={{ fontSize: "22px", fontWeight: "300" }}>
                         Work towards financial freedom
                     </p>

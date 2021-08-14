@@ -4,6 +4,16 @@ section {
     min-height: calc(70vh + 80px);
     padding: 3em 7em;
 }
+@media only screen and (max-width: $tablet-size) {
+    section {
+        padding: 3em 4em;
+    }
+}
+@media only screen and (max-width: $phone-size) {
+    section {
+        padding: 3em 2em;
+    }
+}
 
 .lig {
     &__line {
@@ -88,4 +98,8 @@ section {
 
 .invest__blurbs {
     padding: 5em 3em;
+}
+
+.flex-center {
+    @include flex-center;
 }

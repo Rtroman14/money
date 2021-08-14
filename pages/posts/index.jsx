@@ -20,17 +20,14 @@ import Subscribe from "../../components/Subscribe/Subscribe";
 
 import { PostProvider } from "../../context/post/PostContext";
 
+import styles from "./index.module.scss";
+
 export default function BlogPage({ posts }) {
     return (
         <div>
             <section className="section">
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                    }}>
-                    <div style={{ width: "500px", margin: "35px 0" }}>
+                <div className={styles.container}>
+                    <div className={styles.summary}>
                         <h1>Cash Flows Blog</h1>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque

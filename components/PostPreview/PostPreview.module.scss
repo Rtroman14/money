@@ -2,7 +2,10 @@
 
 .post {
     display: inline-block;
-    width: 312px;
+    // min-width: 250px;
+    // max-width: 375px;
+    // max-width: 312px;
+    width: 100%;
     overflow: hidden;
     box-shadow: $box-shadow;
     border-radius: $graph-radius;
@@ -11,6 +14,11 @@
 
 .image {
     height: 13rem;
+}
+
+.imageContainer {
+    position: relative;
+    height: 208px;
 }
 
 .content {

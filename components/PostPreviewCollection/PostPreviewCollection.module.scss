@@ -1,7 +1,10 @@
 .collection {
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    row-gap: 25px;
+    // grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    // grid-template-columns: repeat(auto-fill, clamp(25%, 312px, 100%));
+
+    gap: 25px;
     justify-content: space-between;
     margin-bottom: 35px;
 }

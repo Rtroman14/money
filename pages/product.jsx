@@ -1,13 +1,16 @@
-// import styles from "../styles/dashboard.scss";
-
 import Image from "next/image";
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0";
 
 import Layout from "../components/Layout";
 
 import Pic from "../public/dashboard.png";
 
 export default function Product() {
+    const { user, error, isLoading } = useUser();
+
+    user && console.log(user);
+
     return (
         <div className="test">
             <div className="test__test">
@@ -15,9 +18,6 @@ export default function Product() {
             </div>
             <p>Copy this: https://www.drone.io/</p>
             <p>Copy this: https://hlrlookup.flywheelsites.com/</p>
-            <div>
-                <Link href="/dashboard">50-30-20</Link>
-            </div>
         </div>
     );
 }
