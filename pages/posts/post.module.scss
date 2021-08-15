@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@import "../../styles/variables";
 
 .post {
     padding: 2em 0;
@@ -9,35 +9,7 @@
     max-width: 900px;
     margin: 0 auto;
 
-    &__meta {
-        &-date {
-            color: rgba(0, 0, 0, 0.4);
-            padding: 1em 0 2em;
-            font-size: 15px;
-        }
-
-        &-author {
-            & h4 {
-                padding-top: 0.5em;
-            }
-            border-top: 1px solid #e7ebed;
-            border-bottom: 1px solid #e7ebed;
-        }
-
-        &-categories {
-            & h4 {
-                padding: 0.5em 0 1em;
-            }
-        }
-    }
-
-    &__title {
-        font-size: 39px;
-        margin: 0.5em 0 1em;
-        line-height: 1.3;
-    }
-
-    &__body {
+    .body {
         & p {
             margin: 1em 0;
             font-size: 17.5px;
@@ -56,21 +28,64 @@
             color: $color-primary;
         }
     }
+
+    .title {
+        font-size: 39px;
+        margin: 0.5em 0 1em;
+        line-height: 1.3;
+    }
+
+    .date {
+        color: rgba(0, 0, 0, 0.4);
+        padding: 1em 0 2em;
+        font-size: 15px;
+    }
 }
 
-// .post
+.author {
+    & h4 {
+        padding-top: 0.5em;
+    }
+    border-top: 1px solid #e7ebed;
+    border-bottom: 1px solid #e7ebed;
+}
+
+.categories {
+    & h4 {
+        padding: 0.5em 0 1em;
+    }
+}
+
+.social {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+
+    & li {
+        list-style: none;
+        padding: 8px;
+    }
+}
+
 @media only screen and (max-width: $tablet-size) {
     .post {
         display: block;
         max-width: 650px;
     }
 }
+
 @media only screen and (max-width: $phone-size) {
     .post {
         padding: 2em 2em;
 
-        &__title {
+        .title {
             font-size: 32px;
+        }
+
+        .social {
+            top: 60%;
+            transform: translate(0, -40%);
         }
     }
 }

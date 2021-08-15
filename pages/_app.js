@@ -1,6 +1,5 @@
 import "../styles/globals.scss";
 import "../styles/Home.scss";
-import "../styles/Post.scss";
 import "../styles/dashboard.scss";
 
 import { UserProvider } from "@auth0/nextjs-auth0";

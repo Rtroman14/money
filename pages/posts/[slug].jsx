@@ -1,11 +1,16 @@
 import Image from "next/image";
 import moment from "moment";
+import { FaFacebookF, FaLinkedinIn, FaPinterestP, FaTwitter } from "react-icons/fa";
+import { Fab } from "@material-ui/core";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import { sanityClient, urlFor, PortableText } from "../../lib/sanity";
 
 // import RecommendedPosts from "../../components/RecommendedPosts/RecommendedPosts";
 import Author from "../../components/Author/Author";
 import Layout from "../../components/Layout";
+
+import styles from "./post.module.scss";
 
 const postQuery = `*[_type == "post" && slug.current == $slug][0]{
     _id,
@@ -26,6 +31,27 @@ export default function Post({ data: { post } }) {
 
     const publishedDate = moment(post.publishedAt).format("MMMM Do, YYYY");
 
+    const handleClick = (event) => alert(`You click on ${event}`);
+
+    const socialIcons = [
+        {
+            icon: "Facebook",
+            component: <FaFacebookF size="22px" />,
+        },
+        {
+            icon: "Twitter",
+            component: <FaTwitter size="22px" />,
+        },
+        {
+            icon: "Pinterest",
+            component: <FaPinterestP size="22px" />,
+        },
+        {
+            icon: "Linkedin",
+            component: <FaLinkedinIn size="22px" />,
+        },
+    ];
+
     return (
         <div style={{ marginTop: "70px" }}>
             <div style={{ position: "relative", height: "75vh" }}>
@@ -39,17 +65,16 @@ export default function Post({ data: { post } }) {
                     priority
                 />
             </div>
-            <div className="post">
-                <div className="post__body">
-                    <h1 className="post__title">{post.title}</h1>
+            <div className={styles.post}>
+                <div className={styles.body}>
+                    <h1 className={styles.title}>{post.title}</h1>
                     <PortableText blocks={post.body} />
                 </div>
-                <aside className="post__meta">
-                    <div className="post__meta-date">{publishedDate}</div>
-                    <div className="post__meta-author">
+                <aside>
+                    <div className={styles.date}>{publishedDate}</div>
+                    <div className={styles.author}>
                         <h4>Author</h4>
                         <div style={{ padding: "1em 0 2em" }}>
-                            {/* <Author authors={authors} dimensions="55px" /> */}
                             {post.authors.map((author) => (
                                 <Author
                                     key={author.author._id}
@@ -59,9 +84,49 @@ export default function Post({ data: { post } }) {
                             ))}
                         </div>
                     </div>
-                    <div className="post__meta-categories">
+                    <div className={styles.categories}>
                         <h4>Categories</h4>
                         {displayCategories}
+                    </div>
+                    <div className={styles.social}>
+                        <ul>
+                            {/* <li>
+                                <Tooltip
+                                    title="Share on Facebook"
+                                    aria-label="Share on Facebook"
+                                    placement="left"
+                                    arrow>
+                                    <Fab size="small" style={{ backgroundColor: "transparent" }}>
+                                        <FaFacebookF size="22px" />
+                                    </Fab>
+                                </Tooltip>
+                            </li>
+                            <li>
+                                <FaTwitter size="22px" />
+                            </li>
+                            <li>
+                                <FaPinterestP size="22px" />
+                            </li>
+                            <li>
+                                <FaLinkedinIn size="22px" />
+                            </li> */}
+                            {socialIcons.map((icon) => (
+                                <li>
+                                    <Tooltip
+                                        title={`Share on ${icon.icon}`}
+                                        aria-label={icon.icon}
+                                        placement="left"
+                                        arrow>
+                                        <Fab
+                                            size="small"
+                                            style={{ backgroundColor: "transparent" }}
+                                            onClick={() => handleClick(icon.icon)}>
+                                            {icon.component}
+                                        </Fab>
+                                    </Tooltip>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </aside>
             </div>
