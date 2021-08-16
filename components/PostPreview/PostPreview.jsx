@@ -69,3 +69,5 @@ export default function PostPreview({ post }) {
         </article>
     );
 }
+
+// Estimated reading time --> https://www.sanity.io/schemas/word-count-and-reading-time-estimation-for-groq-and-portable-text-7470eab7

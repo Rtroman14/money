@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -9,6 +11,12 @@
     top: 0;
     z-index: 999;
     padding: 0 6em;
+}
+
+@media only screen and (max-width: $tablet-size) {
+    .navbar {
+        padding: 0 4em;
+    }
 }
 
 .navbar_items {

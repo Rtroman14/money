@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .collection {
     display: grid;
     // grid-template-columns: repeat(4, auto);
@@ -7,4 +9,10 @@
     gap: 25px;
     justify-content: space-between;
     margin-bottom: 35px;
+}
+
+@media only screen and (max-width: $phone-size) {
+    .collection {
+        gap: 40px;
+    }
 }

@@ -4,7 +4,7 @@ import styles from "./Subscribe.module.scss";
 
 export default function Subscribe() {
     return (
-        <Paper className={styles.subscribe}>
+        <Paper className={styles.subscribe} elevation={3}>
             <h3>
                 Join Our Monthly Newsletter :] You Never Know If Our Next Post Will Financially
                 Change Your Life!

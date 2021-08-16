@@ -24,27 +24,25 @@ import styles from "./index.module.scss";
 
 export default function BlogPage({ posts }) {
     return (
-        <div>
-            <section className="section">
-                <div className={styles.container}>
-                    <div className={styles.summary}>
-                        <h1>Cash Flows Blog</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-                            suscipit sagittis risus, vel convallis purus dictum in. Nulla accumsan
-                            id nibh eu auctor. Fusce non condimentum ipsum.
-                        </p>
-                    </div>
-                    <Subscribe />
+        <section>
+            <div className={styles.container}>
+                <div className={styles.summary}>
+                    <h1>Cash Flows Blog</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+                        suscipit sagittis risus, vel convallis purus dictum in. Nulla accumsan id
+                        nibh eu auctor. Fusce non condimentum ipsum.
+                    </p>
                 </div>
-                <PostProvider>
-                    <Tabs />
-                    <PostPreviewCollection postCollection={posts} />
-                    <ShowMorePosts />
-                </PostProvider>
-                {/* SUBSCRIBE FOR MONTHLY NEWSLETTER WHICH SENDS YOU NEW POSTS YOU MISSED */}
-            </section>
-        </div>
+                <Subscribe />
+            </div>
+            <PostProvider>
+                <Tabs />
+                <PostPreviewCollection postCollection={posts} />
+                <ShowMorePosts />
+            </PostProvider>
+            {/* SUBSCRIBE FOR MONTHLY NEWSLETTER WHICH SENDS YOU NEW POSTS YOU MISSED */}
+        </section>
     );
 }
 

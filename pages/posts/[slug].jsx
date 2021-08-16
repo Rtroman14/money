@@ -6,7 +6,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 import { sanityClient, urlFor, PortableText } from "../../lib/sanity";
 
-// import RecommendedPosts from "../../components/RecommendedPosts/RecommendedPosts";
+import RecommendedPosts from "../../components/RecommendedPosts/RecommendedPosts";
 import Author from "../../components/Author/Author";
 import Layout from "../../components/Layout";
 
@@ -20,11 +20,23 @@ const postQuery = `*[_type == "post" && slug.current == $slug][0]{
     mainImage,
     excerpt,
     authors[]{author->},
-    categories[]->,
+    categories[]->{title},
     body,
 }`;
 
-export default function Post({ data: { post } }) {
+const otherPostsQuery = `*[_type == "post" && title != $title] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    mainImage,
+    excerpt,
+    authors[]{author->},
+    categories[]->{title},
+    body,
+}`;
+
+export default function Post({ data: { post, otherPosts } }) {
     const displayCategories = post.categories.map((category, index) => (
         <div key={index}>{category.title}</div>
     ));
@@ -90,28 +102,8 @@ export default function Post({ data: { post } }) {
                     </div>
                     <div className={styles.social}>
                         <ul>
-                            {/* <li>
-                                <Tooltip
-                                    title="Share on Facebook"
-                                    aria-label="Share on Facebook"
-                                    placement="left"
-                                    arrow>
-                                    <Fab size="small" style={{ backgroundColor: "transparent" }}>
-                                        <FaFacebookF size="22px" />
-                                    </Fab>
-                                </Tooltip>
-                            </li>
-                            <li>
-                                <FaTwitter size="22px" />
-                            </li>
-                            <li>
-                                <FaPinterestP size="22px" />
-                            </li>
-                            <li>
-                                <FaLinkedinIn size="22px" />
-                            </li> */}
                             {socialIcons.map((icon) => (
-                                <li>
+                                <li key={icon.icon}>
                                     <Tooltip
                                         title={`Share on ${icon.icon}`}
                                         aria-label={icon.icon}
@@ -130,7 +122,7 @@ export default function Post({ data: { post } }) {
                     </div>
                 </aside>
             </div>
-            {/* <RecommendedPosts categories={post.categories} currentTitle={post.title} /> */}
+            <RecommendedPosts categories={post.categories} posts={otherPosts} />
         </div>
     );
 }
@@ -155,5 +147,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const { slug } = params;
     const post = await sanityClient.fetch(postQuery, { slug });
-    return { props: { data: { post }, preview: true } };
+    const otherPosts = await sanityClient.fetch(otherPostsQuery, {
+        title: "Pay Yourself First",
+    });
+
+    return { props: { data: { post, otherPosts }, preview: true } };
 }

@@ -32,7 +32,9 @@ export default function Navbar() {
                     <Link href="/">
                         <a style={{ display: "flex", alignItems: "center" }}>
                             <Image src={Logo} width={50} height={50} />
-                            <h2 style={{ color: "#74c947", fontSize: "26px" }}>CashMoney</h2>
+                            <h2 style={{ color: "#74c947", fontSize: "26px", fontFamily: "" }}>
+                                CashMoney
+                            </h2>
                         </a>
                     </Link>
                 </li>
