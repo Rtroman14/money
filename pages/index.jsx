@@ -184,6 +184,12 @@ export default function HomePage({ posts }) {
                         condimentum sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit.
                     </div>
+                    <ul>
+                        <li>Escape the 9 to 5</li>
+                        <li>Travel the world on your own time</li>
+                        <li>Be your own boss</li>
+                        <li>Create generational wealth</li>
+                    </ul>
                 </div>
             </section>
         </>

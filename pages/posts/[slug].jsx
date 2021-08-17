@@ -1,16 +1,19 @@
 import Image from "next/image";
 import moment from "moment";
 import { FaFacebookF, FaLinkedinIn, FaPinterestP, FaTwitter } from "react-icons/fa";
-import { Fab } from "@material-ui/core";
-import Tooltip from "@material-ui/core/Tooltip";
+import { Fab, Tooltip, Divider } from "@material-ui/core";
 
 import { sanityClient, urlFor, PortableText } from "../../lib/sanity";
 
 import RecommendedPosts from "../../components/RecommendedPosts/RecommendedPosts";
 import Author from "../../components/Author/Author";
 import Layout from "../../components/Layout";
+import Subscribe from "../../components/Subscribe/Subscribe";
 
 import styles from "./post.module.scss";
+
+import HelperApi from "../../utils/helpers/Helpers";
+const Helper = new HelperApi();
 
 const postQuery = `*[_type == "post" && slug.current == $slug][0]{
     _id,
@@ -24,7 +27,7 @@ const postQuery = `*[_type == "post" && slug.current == $slug][0]{
     body,
 }`;
 
-const otherPostsQuery = `*[_type == "post" && title != $title] {
+const otherPostsQuery = `*[_type == "post" && slug.current != $slug] {
     _id,
     title,
     slug,
@@ -37,6 +40,8 @@ const otherPostsQuery = `*[_type == "post" && title != $title] {
 }`;
 
 export default function Post({ data: { post, otherPosts } }) {
+    const postCategories = Helper.postCategories(post.categories);
+
     const displayCategories = post.categories.map((category, index) => (
         <div key={index}>{category.title}</div>
     ));
@@ -111,7 +116,7 @@ export default function Post({ data: { post, otherPosts } }) {
                                         arrow>
                                         <Fab
                                             size="small"
-                                            style={{ backgroundColor: "transparent" }}
+                                            style={{ backgroundColor: "white" }}
                                             onClick={() => handleClick(icon.icon)}>
                                             {icon.component}
                                         </Fab>
@@ -122,7 +127,11 @@ export default function Post({ data: { post, otherPosts } }) {
                     </div>
                 </aside>
             </div>
-            <RecommendedPosts categories={post.categories} posts={otherPosts} />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <Subscribe />
+            </div>
+            <Divider />
+            <RecommendedPosts categories={postCategories} posts={otherPosts} />
         </div>
     );
 }
@@ -147,9 +156,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const { slug } = params;
     const post = await sanityClient.fetch(postQuery, { slug });
-    const otherPosts = await sanityClient.fetch(otherPostsQuery, {
-        title: "Pay Yourself First",
-    });
+    const otherPosts = await sanityClient.fetch(otherPostsQuery, { slug });
 
     return { props: { data: { post, otherPosts }, preview: true } };
 }

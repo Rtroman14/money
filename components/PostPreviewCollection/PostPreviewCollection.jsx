@@ -15,7 +15,7 @@ export default function PostPreviewCollection({ postCollection }) {
                 : post.categories[0].title === posts.category
         )
         .filter((post, i) => i < posts[posts.category])
-        .map((post) => <PostPreview post={post} />);
+        .map((post) => <PostPreview key={post._id} post={post} />);
 
     return <div className={styles.collection}>{filteredPosts}</div>;
 }

@@ -1,24 +1,30 @@
 import React from "react";
 
+import HelperApi from "../../utils/helpers/Helpers";
+const Helper = new HelperApi();
+
 import PostPreview from "../PostPreview/PostPreview";
 
-// import "./RecommendedPosts.scss";
+import styles from "./RecommendedPosts.module.scss";
 
 export default function RecommendedPosts({ categories, posts }) {
-    console.log("categories", categories);
-    console.log("posts", posts);
-    // // shuffle posts
-    // nodes.sort(func);
-    // function func() {
-    //     return 0.5 - Math.random();
-    // }
+    const relatedPosts = Helper.relatedPosts(posts, categories);
+    const nonRelatedPosts = Helper.nonRelatedPosts(posts, categories);
 
-    // const recommendPosts = [...similarPosts, ...randomPost];
+    // shuffle posts
+    relatedPosts.sort(Helper.shuffle);
+    nonRelatedPosts.sort(Helper.shuffle);
+
+    const recommendPosts = [...relatedPosts.slice(0, 2), ...nonRelatedPosts.slice(0, 1)];
 
     return (
-        <div>
-            <h1 style={{ textAlign: "center", padding: "1.5em 0 1em" }}>You may also like</h1>
-            {/* <div className="recommended">{recommendPosts}</div> */}
+        <div className={styles.container}>
+            <h1 className={styles.title}>You may also like</h1>
+            <div className={styles.recommended}>
+                {recommendPosts.map((post) => (
+                    <PostPreview key={post._id} post={post} />
+                ))}
+            </div>
         </div>
     );
 }

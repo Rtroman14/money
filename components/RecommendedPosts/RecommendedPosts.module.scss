@@ -1,0 +1,15 @@
+.container {
+    width: 1060px;
+    margin: 0 auto 50px;
+}
+
+.title {
+    text-align: center;
+    padding: 1.5em 0 1em;
+}
+
+.recommended {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    column-gap: 25px;
+}
