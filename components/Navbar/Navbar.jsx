@@ -67,14 +67,14 @@ export default function Navbar() {
             {user && (
                 <ul className={styles.navbar_items}>
                     <li>
+                        <Link href="/api/auth/logout">Logout</Link>
+                    </li>
+                    <li>
                         <Link href="/dashboard">
                             <Button className="btn-cta" variant="contained" disableElevation>
                                 Dashboard
                             </Button>
                         </Link>
-                    </li>
-                    <li>
-                        <Link href="/api/auth/logout">Logout</Link>
                     </li>
                 </ul>
             )}

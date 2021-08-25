@@ -12,6 +12,8 @@ import PostPreview from "../components/PostPreview/PostPreview";
 import Blurb from "../components/Blurb/Blurb";
 
 import Investing from "../public/investing.svg";
+import Travel from "../public/travel.jpg";
+import Liberation from "../public/liberation.jpg";
 
 import Layout from "../components/Layout";
 
@@ -55,7 +57,7 @@ export default function HomePage({ posts }) {
                     }}>
                     <h1 style={{ fontSize: "55px", lineHeight: "1" }}>Cash Money</h1>
                     <p style={{ fontSize: "22px", fontWeight: "300" }}>
-                        Work towards financial freedom
+                        Learn how to achieve financial freedom
                     </p>
                     <div>
                         <Link href="/posts">
@@ -184,12 +186,75 @@ export default function HomePage({ posts }) {
                         condimentum sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit.
                     </div>
+                    <h2>Go from... To:</h2>
                     <ul>
+                        <li>9 to 5 --> your own time</li>
+                        <li>Pay check to pay check --> create generational wealth</li>
+                        <li>Follow orders --> Be your own boss</li>
+                        <li>Learn --> Earn</li>
+                        <br />
                         <li>Escape the 9 to 5</li>
                         <li>Travel the world on your own time</li>
                         <li>Be your own boss</li>
                         <li>Create generational wealth</li>
                     </ul>
+                </div>
+            </section>
+
+            <section>
+                <div style={{ display: "grid", justifyContent: "center" }}>
+                    <span className="lig__line"></span>
+                    <div className="lig__number">3</div>
+                    <h3 className="lig__word">Earn</h3>
+                    <h4 className="lig__title">
+                        Achieve <span className="lig__title-highlight">financial freedom</span>
+                    </h4>
+                    {/* <h4 className="lig__title">Compound your returns for financial freedom</h4> */}
+                    {/* <h3 className="lig__word">Grow</h3>
+                    <h4 className="lig__title">Compound your returns for financial freedom</h4> */}
+                    {/* <h3 className="lig__word">Freedom</h3>
+                    <h4 className="lig__title">Liberate yourself from financial burdens</h4> */}
+                    <div className="lig__description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel mi vel
+                        dolor consectetur sollicitudin quis a odio. Fusce ornare libero ut
+                        condimentum sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                    </div>
+                </div>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <div
+                        style={{
+                            position: "relative",
+                            height: "26em",
+                            width: "850px",
+                            marginBottom: "8em",
+                        }}>
+                        <div>
+                            <Image src={Liberation} layout="fill" objectFit="cover" priority />
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel
+                                mi vel dolor consectetur sollicitudin quis a odio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="lig__earn">
+                    <div style={{ width: "350px", lineHeight: "1.2" }}>
+                        <Image src={Travel} height={500} width={350} />
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel mi
+                            vel dolor consectetur sollicitudin quis a odio.
+                        </p>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "15em" }}>
+                        <div style={{ width: "350px", lineHeight: "1.2" }}>
+                            <Image src={Travel} height={500} width={350} />
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel
+                                mi vel dolor consectetur sollicitudin quis a odio.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </>

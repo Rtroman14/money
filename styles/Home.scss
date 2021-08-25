@@ -109,3 +109,11 @@ section:first-of-type {
 .flex-center {
     @include flex-center;
 }
+
+.lig__earn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // height: 24em;
+    width: 920px;
+    margin: 0 auto;
+}
