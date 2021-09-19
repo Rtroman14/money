@@ -8,7 +8,7 @@ export const data = [
     {
         id: 1,
         name: "Rent",
-        cost: 1000,
+        cost: 700,
         category: "needs",
     },
     {
@@ -38,13 +38,13 @@ export const data = [
     {
         id: 6,
         name: "Internet",
-        cost: 25,
+        cost: 50,
         category: "needs",
     },
     {
         id: 7,
         name: "Utils",
-        cost: 60,
+        cost: 200,
         category: "needs",
     },
     {
@@ -62,7 +62,7 @@ export const data = [
     {
         id: 10,
         name: "Gas",
-        cost: 100,
+        cost: 150,
         category: "needs",
     },
     {

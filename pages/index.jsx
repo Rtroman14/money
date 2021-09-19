@@ -5,6 +5,7 @@ import Link from "next/link";
 import { sanityClient, urlFor } from "../lib/sanity";
 
 import Button from "@material-ui/core/Button";
+import { Fab } from "@material-ui/core";
 import Typical from "react-typical";
 
 import AreaChart from "../components/AreaChart/AreaChart";
@@ -14,6 +15,8 @@ import Blurb from "../components/Blurb/Blurb";
 import Investing from "../public/investing.svg";
 import Travel from "../public/travel.jpg";
 import Liberation from "../public/liberation.jpg";
+
+import { FaFacebookF, FaLinkedinIn, FaPinterestP, FaTwitter } from "react-icons/fa";
 
 import Layout from "../components/Layout";
 
@@ -32,6 +35,25 @@ const postQuery = `
         categories[]->,
         body,
     }`;
+
+const socialIcons = [
+    {
+        icon: "Facebook",
+        component: <FaFacebookF size="30px" />,
+    },
+    {
+        icon: "Twitter",
+        component: <FaTwitter size="30px" />,
+    },
+    {
+        icon: "Pinterest",
+        component: <FaPinterestP size="30px" />,
+    },
+];
+
+const handleClick = (social) => {
+    alert(`Follow us on ${social}`);
+};
 
 export default function HomePage({ posts }) {
     return (
@@ -256,7 +278,28 @@ export default function HomePage({ posts }) {
                         </div>
                     </div>
                 </div>
+                <h1>MAKE THE CUSTOMER THE HERO!</h1>
             </section>
+
+            {/* <section style={{ backgroundColor: "#ccc" }}>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <div>
+                        <h3 style={{ textAlign: "center" }}>Follow us</h3>
+                        <ul className="social">
+                            {socialIcons.map((icon) => (
+                                <li key={icon.icon}>
+                                    <Fab
+                                        size="large"
+                                        style={{ backgroundColor: "white" }}
+                                        onClick={() => handleClick(icon.icon)}>
+                                        {icon.component}
+                                    </Fab>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </section> */}
         </>
     );
 }

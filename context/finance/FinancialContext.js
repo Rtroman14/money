@@ -15,10 +15,9 @@ export function FinancialProvider(props) {
         category: "all",
         sortCost: "",
         income: {
-            // net: 4000,
-            // gross: 5000,
-            net: 4095,
-            gross: 5833,
+            // 52 weeks === 26 paychecks per year. Monthly net === 26/12 * paycheck
+            net: Math.round((26 / 12) * 2428),
+            gross: Math.round(85000 / 12),
         },
     };
 

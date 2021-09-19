@@ -117,3 +117,17 @@ section:first-of-type {
     width: 920px;
     margin: 0 auto;
 }
+
+.social {
+    // position: fixed;
+    // top: 50%;
+    // right: 10px;
+    // transform: translate(0, -50%);
+    // z-index: 999;
+    display: flex;
+
+    & li {
+        list-style: none;
+        padding: 8px;
+    }
+}
