@@ -84,6 +84,8 @@ export default function Post({ data: { post, otherPosts } }) {
 
                 <PortableText blocks={post.excerpt} />
 
+                <p>Bulleted TLDR ???</p>
+
                 <div className={styles.author}>
                     <div style={{ padding: "2em 0" }}>
                         {post.authors.map((author) => (
@@ -97,7 +99,7 @@ export default function Post({ data: { post, otherPosts } }) {
                         ))}
                     </div>
                 </div>
-                <div className={styles.date}>{publishedDate}</div>
+                <div className={styles.date}>{publishedDate} - 5 min</div>
             </div>
 
             <div className={styles.imageContainer}>
