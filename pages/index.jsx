@@ -189,7 +189,7 @@ export default function HomePage({ posts }) {
                 </div>
             </section>
 
-            <section>
+            {/* <section>
                 <div style={{ display: "grid", justifyContent: "center" }}>
                     <span className="lig__line"></span>
                     <div className="lig__number">3</div>
@@ -197,11 +197,6 @@ export default function HomePage({ posts }) {
                     <h4 className="lig__title">
                         Achieve <span className="lig__title-highlight">financial freedom</span>
                     </h4>
-                    {/* <h4 className="lig__title">Compound your returns for financial freedom</h4> */}
-                    {/* <h3 className="lig__word">Grow</h3>
-                    <h4 className="lig__title">Compound your returns for financial freedom</h4> */}
-                    {/* <h3 className="lig__word">Freedom</h3>
-                    <h4 className="lig__title">Liberate yourself from financial burdens</h4> */}
                     <div className="lig__description">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel mi vel
                         dolor consectetur sollicitudin quis a odio. Fusce ornare libero ut
@@ -221,7 +216,7 @@ export default function HomePage({ posts }) {
                         <li>Create generational wealth</li>
                     </ul>
                 </div>
-            </section>
+            </section> */}
 
             <section>
                 <div style={{ display: "grid", justifyContent: "center" }}>
@@ -231,11 +226,6 @@ export default function HomePage({ posts }) {
                     <h4 className="lig__title">
                         Achieve <span className="lig__title-highlight">financial freedom</span>
                     </h4>
-                    {/* <h4 className="lig__title">Compound your returns for financial freedom</h4> */}
-                    {/* <h3 className="lig__word">Grow</h3>
-                    <h4 className="lig__title">Compound your returns for financial freedom</h4> */}
-                    {/* <h3 className="lig__word">Freedom</h3>
-                    <h4 className="lig__title">Liberate yourself from financial burdens</h4> */}
                     <div className="lig__description">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel mi vel
                         dolor consectetur sollicitudin quis a odio. Fusce ornare libero ut

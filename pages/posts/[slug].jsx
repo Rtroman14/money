@@ -3,6 +3,8 @@ import moment from "moment";
 import { FaFacebookF, FaLinkedinIn, FaPinterestP, FaTwitter } from "react-icons/fa";
 import { Fab, Tooltip, Divider } from "@material-ui/core";
 
+import { Chip, Stack } from "@mui/material";
+
 import { sanityClient, urlFor, PortableText } from "../../lib/sanity";
 
 import RecommendedPosts from "../../components/RecommendedPosts/RecommendedPosts";
@@ -42,9 +44,13 @@ const otherPostsQuery = `*[_type == "post" && slug.current != $slug] {
 export default function Post({ data: { post, otherPosts } }) {
     const postCategories = Helper.postCategories(post.categories);
 
-    const displayCategories = post.categories.map((category, index) => (
-        <div key={index}>{category.title}</div>
-    ));
+    const displayCategories = (
+        <Stack direction="row" spacing={1}>
+            {post.categories.map((category, index) => (
+                <Chip key={index} label={category.title} variant="outlined" />
+            ))}
+        </Stack>
+    );
 
     const publishedDate = moment(post.publishedAt).format("MMMM Do, YYYY");
 
@@ -70,68 +76,72 @@ export default function Post({ data: { post, otherPosts } }) {
     ];
 
     return (
-        <div style={{ marginTop: "70px" }}>
-            <div style={{ position: "relative", height: "75vh" }}>
-                <Image
-                    src={urlFor(post.mainImage).url()}
-                    alt={post.mainImage.alt}
-                    layout="fill"
-                    objectFit="cover"
-                    // width={500}
-                    // height={500}
-                    priority
-                />
-            </div>
-            <div className={styles.post}>
-                <div className={styles.body}>
-                    <h1 className={styles.title}>{post.title}</h1>
-                    <PortableText blocks={post.body} />
-                </div>
-                <aside>
-                    <div className={styles.date}>{publishedDate}</div>
-                    <div className={styles.author}>
-                        <h4>Author</h4>
-                        <div style={{ padding: "1em 0 2em" }}>
-                            {post.authors.map((author) => (
+        <div style={{ marginTop: "100px" }}>
+            <div className={styles.heading}>
+                <div>{displayCategories}</div>
+
+                <h1 className={styles.title}>{post.title}</h1>
+
+                <PortableText blocks={post.excerpt} />
+
+                <div className={styles.author}>
+                    <div style={{ padding: "2em 0" }}>
+                        {post.authors.map((author) => (
+                            <>
                                 <Author
                                     key={author.author._id}
                                     name={author.author.name}
                                     image={author.author.image}
                                 />
-                            ))}
-                        </div>
+                            </>
+                        ))}
                     </div>
-                    <div className={styles.categories}>
-                        <h4>Categories</h4>
-                        {displayCategories}
-                    </div>
-                    <div className={styles.social}>
-                        <ul>
-                            {socialIcons.map((icon) => (
-                                <li key={icon.icon}>
-                                    <Tooltip
-                                        title={`Share on ${icon.icon}`}
-                                        aria-label={icon.icon}
-                                        placement="left"
-                                        arrow>
-                                        <Fab
-                                            size="small"
-                                            style={{ backgroundColor: "white" }}
-                                            onClick={() => handleClick(icon.icon)}>
-                                            {icon.component}
-                                        </Fab>
-                                    </Tooltip>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </aside>
+                </div>
+                <div className={styles.date}>{publishedDate}</div>
             </div>
+
+            <div className={styles.imageContainer}>
+                <Image
+                    src={urlFor(post.mainImage).url()}
+                    alt={post.mainImage.alt}
+                    layout="fill"
+                    objectFit="cover"
+                    priority
+                />
+            </div>
+
+            <div className={styles.body}>
+                <PortableText blocks={post.body} />
+            </div>
+
+            <div className={styles.social}>
+                <ul>
+                    {socialIcons.map((icon) => (
+                        <li key={icon.icon}>
+                            <Tooltip
+                                title={`Share on ${icon.icon}`}
+                                aria-label={icon.icon}
+                                placement="left"
+                                arrow>
+                                <Fab
+                                    size="small"
+                                    style={{ backgroundColor: "white" }}
+                                    onClick={() => handleClick(icon.icon)}>
+                                    {icon.component}
+                                </Fab>
+                            </Tooltip>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <Divider />
+
+            <RecommendedPosts categories={postCategories} posts={otherPosts} />
+
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <Subscribe />
             </div>
-            <Divider />
-            <RecommendedPosts categories={postCategories} posts={otherPosts} />
         </div>
     );
 }
