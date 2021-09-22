@@ -16,6 +16,10 @@ import Investing from "../public/investing.svg";
 import Travel from "../public/travel.jpg";
 import Liberation from "../public/liberation.jpg";
 
+import { styled } from "@mui/material/styles";
+import MonetizationOnRoundedIcon from "@mui/icons-material/MonetizationOnRounded";
+import { List, ListItem, ListItemIcon, ListItemText, Grid, Container, Paper } from "@mui/material";
+
 import { FaFacebookF, FaLinkedinIn, FaPinterestP, FaTwitter } from "react-icons/fa";
 
 import Layout from "../components/Layout";
@@ -35,21 +39,6 @@ const postQuery = `
         categories[]->,
         body,
     }`;
-
-const socialIcons = [
-    {
-        icon: "Facebook",
-        component: <FaFacebookF size="30px" />,
-    },
-    {
-        icon: "Twitter",
-        component: <FaTwitter size="30px" />,
-    },
-    {
-        icon: "Pinterest",
-        component: <FaPinterestP size="30px" />,
-    },
-];
 
 const handleClick = (social) => {
     alert(`Follow us on ${social}`);
@@ -165,28 +154,141 @@ export default function HomePage({ posts }) {
                 <div style={{ padding: "0 8em" }}>
                     <AreaChart title="Investing $500/Month in the Market vs. Savings Account" />
                 </div>
-                <div className="columns-2 invest__blurbs">
-                    <Blurb
-                        title="Invest In Yourself"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-                            sapiente delectus natus corrupti ex itaque vel corporis."
-                    />
-                    <Blurb
-                        title="Multiple Income Sources"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-                            sapiente delectus natus corrupti ex itaque vel corporis."
-                    />
-                    <Blurb
-                        title="Think Longterm"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-                            sapiente delectus natus corrupti ex itaque vel corporis."
-                    />
-                    <Blurb
-                        title="Have Discipline"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-                            sapiente delectus natus corrupti ex itaque vel corporis."
-                    />
+
+                <div className="row columns-2">
+                    <div className="columns-2 invest__blurbs">
+                        <Blurb
+                            title="Invest In Yourself"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        />
+                        <Blurb
+                            title="Multiple Income Sources"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        />
+                        <Blurb
+                            title="Think Longterm"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        />
+                        <Blurb
+                            title="Have Discipline"
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        />
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                        }}>
+                        <div>
+                            <h2 className="title-secondary">
+                                Learn From The Best Minds of Our Time
+                            </h2>
+                            <p style={{ padding: "1em 0 1.5em" }}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel
+                                mi vel dolor consectetur sollicitudin quis a odio.
+                            </p>
+                            <ul>
+                                <li style={{ listStyle: "none" }}>
+                                    <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} /> You are
+                                    your most valuable asset
+                                </li>
+                                <li style={{ listStyle: "none" }}>
+                                    <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} /> We will
+                                    show you how to create multiple income sources
+                                </li>
+                                <li style={{ listStyle: "none" }}>
+                                    <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} /> Building
+                                    wealth takes time. You won't get rich overnight
+                                </li>
+                                <li style={{ listStyle: "none" }}>
+                                    <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} /> Keep the
+                                    end goal in mind through the tough timesl
+                                </li>
+                            </ul>
+
+                            <Link href="/posts">
+                                <Button size="large" className="btn-cta">
+                                    Learn More
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <section>
+                <Grid container>
+                    <Grid container xs={6} spacing={3}>
+                        <Grid item xs={6}>
+                            <Blurb
+                                title="Invest In Yourself"
+                                description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Blurb
+                                title="Multiple Income Sources"
+                                description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Blurb
+                                title="Think Longterm"
+                                description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Blurb
+                                title="Have Discipline"
+                                description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container xs={6} alignItems="center">
+                        <Grid item>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}>
+                                <div>
+                                    <h2 className="title-secondary">
+                                        Learn From The Best Minds of Our Time
+                                    </h2>
+                                    <p style={{ padding: "1em 0 1.5em" }}>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Mauris vel mi vel dolor consectetur sollicitudin quis a
+                                        odio.
+                                    </p>
+                                    <ul>
+                                        <li style={{ listStyle: "none" }}>
+                                            <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} />{" "}
+                                            You are your most valuable asset
+                                        </li>
+                                        <li style={{ listStyle: "none" }}>
+                                            <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} />{" "}
+                                            We will show you how to create multiple income sources
+                                        </li>
+                                        <li style={{ listStyle: "none" }}>
+                                            <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} />{" "}
+                                            Building wealth takes time. You won't get rich overnight
+                                        </li>
+                                        <li style={{ listStyle: "none" }}>
+                                            <MonetizationOnRoundedIcon sx={{ color: "#74c947" }} />{" "}
+                                            Keep the end goal in mind through the tough timesl
+                                        </li>
+                                    </ul>
+
+                                    <Link href="/posts">
+                                        <Button size="large" className="btn-cta">
+                                            Learn More
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </section>
 
             {/* <section>
