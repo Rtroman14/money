@@ -1,19 +1,4 @@
-const phrases = [
-    "so pumped for this",
-    "whats up ladies",
-    "diamon hands",
-    "yeah same",
-    "me too",
-    "word",
-    "good how are you",
-    "hi",
-    "Hellooo",
-    "To the moon",
-    "Moonshots",
-];
-
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-
+const delay = (minutes) => new Promise((res) => setTimeout(res, minutes * 60000));
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
 const makeFetch = (phrase) => {
@@ -49,9 +34,26 @@ const makeFetch = (phrase) => {
     }).then((el) => console.log(el));
 };
 
+const phrases = [
+    "so pumped for this",
+    "whats up ladies",
+    "diamon hands",
+    "yeah same",
+    "me too",
+    "word",
+    "good how are you",
+    "hi",
+    "Hellooo",
+    "To the moon",
+    "Moonshots",
+];
+
+const numLoops = 90;
+const minutesWait = 1.05;
+
 let run = true;
 
-for (let i = 1; i < 90; i++) {
+for (let i = 1; i < numLoops; i++) {
     const max = phrases.length;
 
     const randumNum = getRandomInt(max - 1);
@@ -60,5 +62,5 @@ for (let i = 1; i < 90; i++) {
 
     await makeFetch(phrase);
 
-    await delay(65000);
+    await delay(minutesWait);
 }
