@@ -1,46 +1,58 @@
 @import "../../styles/variables";
 
-$page-width: 860px;
-
-.heading {
-    max-width: $page-width;
-    margin: 0.5em auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .title {
-        font-size: 43px;
-        margin: 0.5em 0;
-        line-height: 1.3;
-    }
-}
-
-.imageContainer {
-    position: relative;
-    height: 600px;
-    max-width: 1280px;
+.post {
+    padding: 2em 0;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-column-gap: 3em;
+    border-bottom: 1px solid #e7ebed;
+    max-width: 900px;
     margin: 0 auto;
 
-    & > div {
-        border-radius: 30px;
+    .body {
+        & p {
+            margin: 1em 0;
+            font-size: 17.5px;
+        }
+
+        & ul {
+            margin: 0 2em;
+        }
+
+        & div > ul {
+            margin: 1em 2em;
+        }
+
+        & a {
+            text-decoration: none;
+            color: $color-primary;
+        }
+    }
+
+    .title {
+        font-size: 39px;
+        margin: 0.5em 0 1em;
+        line-height: 1.3;
+    }
+
+    .date {
+        color: rgba(0, 0, 0, 0.4);
+        padding: 1em 0 2em;
+        font-size: 15px;
     }
 }
 
-.body {
-    max-width: $page-width;
-    margin: 4em auto;
-
-    & p {
-        margin: 1em 0;
-        font-size: 17.5px;
-        line-height: 1.75;
+.author {
+    & h4 {
+        padding-top: 0.5em;
     }
+    border-top: 1px solid #e7ebed;
+    border-bottom: 1px solid #e7ebed;
+}
 
-    & a {
-        text-decoration: none;
-        color: $color-primary;
+.categories {
+    & h4 {
+        padding: 0.5em 0 1em;
     }
 }
 

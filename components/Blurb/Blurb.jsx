@@ -6,7 +6,11 @@ export default function Blurb({ icon, title, description }) {
     return (
         <Paper className={styles.blurb} elevation={3}>
             <Avatar
-                sx={{ bgcolor: "rgba(103, 58, 183, 0.1)", marginBottom: "16px" }}
+                sx={{
+                    bgcolor: "rgba(103, 58, 183, 0.1)",
+                    marginBottom: "16px",
+                    borderRadius: "16px",
+                }}
                 variant="rounded">
                 {icon}
             </Avatar>

@@ -22,8 +22,12 @@ export default function Navbar() {
         });
     }, []);
 
-    // TODO: Change Posts to Learn
-    const pages = ["Posts", "Product", "About"];
+    const pages = [
+        { title: "Start Here", slug: "learn/your-financial-freedom-journey-starts-here" },
+        { title: "Learn", slug: "learn" },
+        { title: "Product", slug: "products" },
+        { title: "About", slug: "about" },
+    ];
 
     return (
         <nav className={`${styles.navbar} ${scroll && styles.scroll}`}>
@@ -42,11 +46,11 @@ export default function Navbar() {
             <ul className={styles.navbar_items}>
                 {pages.map((page) => (
                     <li
-                        key={page}
+                        key={page.title}
                         className={`${styles.navbar_items} ${
-                            asPath.includes(page.toLowerCase()) && styles.active
+                            asPath.includes(page.title.toLowerCase()) && styles.active
                         }`}>
-                        <Link href={`/${page.toLowerCase()}`}>{page}</Link>
+                        <Link href={`/${page.slug}`}>{page.title}</Link>
                     </li>
                 ))}
             </ul>

@@ -59,6 +59,13 @@ export default function BudgetPie() {
             <div className={styles.piechart}>
                 <PieChart />
             </div>
+
+            <div>
+                <a href="https://mui.com/components/data-grid/editing/">
+                    USE DATA-GRID EDITABLE TABLE
+                </a>
+            </div>
+
             <div className="dashboard__graph-table">
                 <Table />
             </div>

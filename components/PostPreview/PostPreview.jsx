@@ -21,7 +21,7 @@ export default function PostPreview({ post }) {
 
     return (
         <article className={styles.post} key={post._id}>
-            <Link href={`/posts/${post.slug.current}`}>
+            <Link href={`/learn/${post.slug.current}`}>
                 <a>
                     <div className={styles.imageContainer}>
                         <Image
@@ -39,7 +39,7 @@ export default function PostPreview({ post }) {
                     <p className={styles.date}>{publishedDate}</p>
                 </div>
                 <div>
-                    <Link href={`/posts/${post.slug.current}`}>
+                    <Link href={`/learn/${post.slug.current}`}>
                         <a>
                             <h4 className={styles.title}>{post.title}</h4>
                         </a>
